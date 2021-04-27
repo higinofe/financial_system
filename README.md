@@ -1,1 +1,1 @@
-Projeto pessoal, controle de contas a pagar e receber e previsões futuras 
+Projeto pessoal, controle de contas a pagar e receber e previsões futuras, versão 1.
