@@ -14,7 +14,7 @@
     },
     "autoload": {
       "psr-4": {
-        "Source\\": "source/"
+        "source\\": "source/"
       },
       "files": [
         "source/Boot/Config.php",
@@ -23,6 +23,7 @@
     },
     "require": {
       "php": "^7.1",
+      "ext-pdo": "^7.1",
       "coffeecode/router": "^1.0"
     }
   }

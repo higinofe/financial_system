@@ -6,6 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Source\\' => array($baseDir . '/source'),
+    'source\\' => array($baseDir . '/source'),
     'CoffeeCode\\Router\\' => array($vendorDir . '/coffeecode/router/src'),
 );

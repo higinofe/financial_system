@@ -1,17 +1,11 @@
 <?php
 
+use source\Models\payments;
+
 require __DIR__ . "/vendor/autoload.php";
 
-use CoffeeCode\Router\Router;
-use source\Core\Model\payments;
 
+$data = ['name' => 'Casa', 'type' => '1', 'value' => '1000'];
 
-
-$data = ['name' => 'casa', 'type' => 'mensal', 'value' => '1500.00'];
-
-//var_dump($data);
-
-//$payments = new Router();
-$payments1 = new payments();
-
-
+$payments1 = new payments;
+$payments1->createPayments($data);
