@@ -58,7 +58,7 @@ abstract class Model
         return $this->message;
     }
 
-    public function find(?string $terms = null, ?string $params = null, string $columns = "*")
+    public function find($terms = null, $params = null, $columns = "*")
     {   
         if ($terms) {
             $this->query = "SELECT {$columns} FROM {$this->entity} WHERE {$terms}";
@@ -70,31 +70,31 @@ abstract class Model
         return $this;
     }
 
-    public function findById(int $id, string $columns = "*"): ?Model
+    public function findById($id, $columns = "*")
     {
         $find = $this->find("id = :id", "id={$id}", $columns);
         return $find->fetch();
     }
 
-    public function order(string $columnOrder): Model
+    public function order(string $columnOrder)
     {
         $this->order = " ORDER BY {$columnOrder}";
         return $this;
     }
 
-    public function limit(int $limit): Model
+    public function limit($limit)
     {
         $this->limit = " LIMIT {$limit}";
         return $this;
     }
 
-    public function offset(int $offset): Model
+    public function offset($offset)
     {
         $this->offset = " OFFSET {$offset}";
         return $this;
     }
 
-    public function fetch(bool $all = false)
+    public function fetch($all = false)
     {
         try {
             $stmt = Connect::getInstance()->prepare($this->query . $this->order . $this->limit . $this->offset);
@@ -115,14 +115,14 @@ abstract class Model
         }
     }
 
-    public function count(string $key = "id"): int
+    public function count($key = "id")
     {
         $stmt = Connect::getInstance()->prepare($this->query);
         $stmt->execute($this->params);
         return $stmt->rowCount();
     }
 
-    protected function create(array $data): ?int
+    protected function create($data)
     {
         try {
             $columns = implode(", ", array_keys($data));
@@ -138,7 +138,7 @@ abstract class Model
         }
     }
 
-    protected function update(array $data, string $terms, string $params): ?int
+    protected function update($data, $terms, $params)
     {
         try {
             $dateSet = [];
@@ -157,7 +157,7 @@ abstract class Model
         }
     }
 
-    public function save(): bool
+    public function save()
     {
         if (!$this->required()) {
             $this->message->warning("Preencha todos os campos para continuar");
@@ -187,12 +187,12 @@ abstract class Model
         return true;
     }
 
-    public function lastId(): int
+    public function lastId()
     {
         return Connect::getInstance()->query("SELECT MAX(id) as maxId FROM {$this->entity}")->fetch()->maxId + 1;
     }
 
-    public function delete(string $terms, ?string $params): bool
+    public function delete($terms, $params)
     {
         try {
             $stmt = Connect::getInstance()->prepare("DELETE FROM {$this->entity} WHERE {$terms}");
@@ -210,7 +210,7 @@ abstract class Model
         }
     }
 
-    public function destroy(): bool
+    public function destroy()
     {
         if (empty($this->id)) {
             return false;
@@ -221,7 +221,7 @@ abstract class Model
     }
 
  
-    protected function safe(): ?array
+    protected function safe()
     {
         $safe = (array)$this->data;
         foreach ($this->protected as $unset) {
@@ -231,7 +231,7 @@ abstract class Model
     }
 
 
-    private function filter(array $data): ?array
+    private function filter($data)
     {
         $filter = [];
         foreach ($data as $key => $value) {
@@ -241,11 +241,15 @@ abstract class Model
     }
 
     
-    protected function required(): bool
+    protected function required()
     {
+        
         $data = (array)$this->data();
+        
+       
         foreach ($this->required as $field) {
             if (empty($data[$field])) {
+                var_dump($field);                
                 return false;
             }
         }

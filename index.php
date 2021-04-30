@@ -1,11 +1,20 @@
 <?php
+ob_start();
 
-use source\Models\payments;
-
+use CoffeeCode\Router\Router;
 require __DIR__ . "/vendor/autoload.php";
 
 
-$data = ['name' => 'Casa', 'type' => '1', 'value' => '1000'];
+$route = new Router(url(), ":");
+$route->namespace("source\aplication");
 
-$payments1 = new payments;
-$payments1->createPayments($data);
+$route->group(null);
+$route->get("/", "engineVision:home");
+
+
+if ($route->error()) {
+    $route->redirect("/ops/{$route->error()}");
+}
+
+
+ob_end_flush();
