@@ -5,7 +5,7 @@ namespace Source\Core;
 use League\Plates\Engine;
 
 
-class View
+class View 
 {
     private $engine;
 

@@ -16,7 +16,7 @@ define("CONFIG_NAME", "financial");
  */
 
 define("CONFIG_URL_BASE", "sistemfinanci");
-define("CONFIG_URL_TEST", "http://192.168.0.10/html");
+define("CONFIG_URL_TEST", "https://www.localhost/html/");
 define("CONFIG_URL_ADMIN", "/admin");
 
 /**

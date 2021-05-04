@@ -27,7 +27,7 @@
  function url(string $path = null): string
  {
      if($path) {
-             return CONFIG_URL_TEST . "/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
+             return CONFIG_URL_TEST. "/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
          }
          return CONFIG_URL_TEST;
  }
