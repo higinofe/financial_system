@@ -1,27 +1,28 @@
 <?php
-require __DIR__ . "/vendor/autoload.php";
+ob_start();
+
+require __DIR__ . '/vendor/autoload.php';
 
 use CoffeeCode\Router\Router;
 
 
+$route = new Router(url());
 
-$route = new Router(url(), ":");
-$route->namespace("source\aplication");
+$route->namespace('Source\Application');
 
-$route->get("/", "engineVision:home");
+$route->group(null);
+$route->get("/", "ControllerApp:home");
+$route->get("/teste", "ControllerApp:teste");
 
-
-/**
- * ROUTE
- */
 $route->dispatch();
 
-/**
- * ERROR REDIRECT
- */
+$route->group("/ops");
+$route->get("/{errcode}", "Web:error");
+
+/*
+
 if ($route->error()) {
     $route->redirect("/ops/{$route->error()}");
 }
-
-
-
+*/
+ob_end_flush();

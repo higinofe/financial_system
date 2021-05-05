@@ -14,11 +14,11 @@
     },
     "autoload": {
       "psr-4": {
-        "source\\": "source/"
+        "Source\\": "Source/"
       },
       "files": [
-        "source/Boot/Config.php",
-        "source/Boot/Helpers.php"
+        "Source/Boot/Config.php",
+        "Source/Boot/Functions.php"
       ]
     },
     "require": {

@@ -15,14 +15,14 @@ class ComposerStaticInit2c8ac8f2b71f56b89d2fbc60cf2c2dc4
         'bdc465a053da7f7ddb072631f6d41d45' => __DIR__ . '/..' . '/league/plates/src/Extension/LayoutSections/layout-sections.php',
         'afa76803f24616d7599be3b7b0846adc' => __DIR__ . '/..' . '/league/plates/src/Extension/Folders/folders.php',
         '16c5be35e32c6cf916d875518b909210' => __DIR__ . '/..' . '/league/plates/src/Util/util.php',
-        '9e17bda587348fbb6745d0ffe0793171' => __DIR__ . '/../..' . '/source/Boot/Config.php',
-        'e4599776c0f40b7a90b12d30a01dfe7c' => __DIR__ . '/../..' . '/source/Boot/Helpers.php',
+        'eb4ac9c6ca6cc0aa7053f964afa23bb2' => __DIR__ . '/../..' . '/Source/Boot/Config.php',
+        'c5e1194a4e342a3a6a5578bfb52b99c2' => __DIR__ . '/../..' . '/Source/Boot/Functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
-        's' => 
+        'S' => 
         array (
-            'source\\' => 7,
+            'Source\\' => 7,
         ),
         'L' => 
         array (
@@ -35,9 +35,9 @@ class ComposerStaticInit2c8ac8f2b71f56b89d2fbc60cf2c2dc4
     );
 
     public static $prefixDirsPsr4 = array (
-        'source\\' => 
+        'Source\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/source',
+            0 => __DIR__ . '/../..' . '/Source',
         ),
         'League\\Plates\\' => 
         array (

@@ -1,8 +1,8 @@
 <?php
 
-namespace source\Models\box_flow;
+namespace Source\Models\box_flow;
 
-use source\Core\Model;
+use Source\Core\Model;
 
 class payments extends Model
 {

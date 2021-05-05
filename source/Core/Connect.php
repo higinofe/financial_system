@@ -1,6 +1,6 @@
 <?php
 
-namespace source\Core;
+namespace Source\Core;
 
 class Connect
 {

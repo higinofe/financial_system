@@ -1,8 +1,8 @@
 <?php
 
-namespace source\Models\user;
+namespace Source\Models\user;
 
-use source\Core\Model;
+use Source\Core\Model;
 
 class users extends Model
 {

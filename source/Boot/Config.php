@@ -1,27 +1,23 @@
 <?php
 
 /**
-*DATA BASE 
-*
-*/
+ * BANCO DE DADOS
+ */
 define("CONFIG_HOST", "localhost");
+define("CONFIG_NAME", "finacial");
 define("CONFIG_USER", "root");
 define("CONFIG_PASSW", "");
-define("CONFIG_NAME", "financial");
 
 
 /**
- * URL
- * 
+ * URL CONFIG
  */
 
-define("CONFIG_URL_BASE", "sistemfinanci");
-define("CONFIG_URL_TEST", "https://www.localhost/html/");
-define("CONFIG_URL_ADMIN", "/admin");
+ define('CONFIG_URL_TEST', 'localhost/html');
 
-/**
- * VIEW
- */
-define("CONFIG_VIEW_PATH", __DIR__ . "/../../");
-define("CONFIG_VIEW_EXT", "php");
-define("CONFIG_VIEW_THEME", "layout");
+ /**
+  * VIEW ENGINE
+  */
+
+  define("CONFIG_URL_LAYOUT", "/../../");
+  define("CONFIG_URL_EXT", "php");

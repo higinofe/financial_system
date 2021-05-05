@@ -2,31 +2,32 @@
 
 namespace Source\Core;
 
-use League\Plates\Engine;
 
-
-class View 
+class ViewEngine
 {
     private $engine;
 
-    public function __construct(string $path = CONFIG_VIEW_PATH, string $ext = CONFIG_VIEW_EXT)
+    public function __construct($path = CONFIG_URL_LAYOUT,  $ext = CONFIG_URL_EXT) 
     {
+
         $this->engine = Engine::create($path, $ext);
     }
 
-    public function path(string $name, string $path)
+    public function path($name, $path)
     {
         $this->engine->addFolder($name, $path);
         return $this;
     }
 
-    public function render(string $templateName, array $data)
+    public function render($templateName, $data)
     {
         return $this->engine->render($templateName, $data);
+        
     }
 
     public function engine()
     {
         return $this->engine();
     }
+
 }
