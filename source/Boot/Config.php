@@ -16,8 +16,14 @@ define("CONFIG_PASSW", "");
  define('CONFIG_URL_TEST', 'localhost/html');
 
  /**
+  * SITE
+  */
+
+  define("CONFIG_SITE", "#Fluxo de Caixa");
+
+ /**
   * VIEW ENGINE
   */
 
-  define("CONFIG_URL_LAYOUT", "/../../");
-  define("CONFIG_URL_EXT", "php");
+  define("CONFIG_ENGINE_PROJECT", "layout");
+  define("CONFIG_ENGINE_EXT", "php");

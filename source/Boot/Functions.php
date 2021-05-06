@@ -26,3 +26,13 @@ function url_back(): string
     return ($_SERVER['HTTP_REFERER'] ?? url());
 }
 
+function uri($uri = null)
+{
+    if($uri) {
+        return CONFIG_URL_TEST . "/{$uri}";
+    }
+
+    return CONFIG_URL_TEST;
+}
+
+
