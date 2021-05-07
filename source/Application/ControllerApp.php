@@ -15,6 +15,7 @@ class ControllerApp extends shots
 
     public function home($data)
     {
+        
 
         echo $this->view->render("home", [
             ""

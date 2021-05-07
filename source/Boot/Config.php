@@ -19,7 +19,7 @@ define("CONFIG_PASSW", "");
   * SITE
   */
 
-  define("CONFIG_SITE", "#Fluxo de Caixa");
+  define("CONFIG_SITE_TITLE", "#Fluxo de Caixa");
 
  /**
   * VIEW ENGINE
