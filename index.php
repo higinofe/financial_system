@@ -11,8 +11,9 @@ $route = new Router(url());
 $route->namespace('Source\Application');
 
 $route->group(null);
-$route->get("/", "ControllerApp:home");
-$route->get("/teste", "ControllerApp:teste");
+$route->get("/", "ControllerApp:enter");
+$route->get("/dash", "ControllerApp:dash");
+$route->get("/dash/home", "ControllerApp:home");
 
 $route->dispatch();
 
