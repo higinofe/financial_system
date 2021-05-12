@@ -13,9 +13,9 @@
 function url(string $path = null): string
 {
     if($path) {
-            return CONFIG_URL_TEST . "/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
+            return CONFIG_URL . "/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
         }
-        return CONFIG_URL_TEST;
+        return CONFIG_URL;
 }
 
 /**
@@ -29,10 +29,10 @@ function url_back(): string
 function uri($uri = null)
 {
     if($uri) {
-        return CONFIG_URL_TEST . "/{$uri}";
+        return CONFIG_URL_THEME . "/{$uri}";
     }
 
-    return CONFIG_URL_TEST;
+    return CONFIG_URL_THEME;
 }
 
 

@@ -11,7 +11,7 @@ $route = new Router(url());
 $route->namespace('Source\Application');
 
 $route->group(null);
-$route->get("/", "ControllerApp:enter");
+$route->get("/", "ControllerApp:theme");
 $route->get("/dash", "ControllerApp:dash");
 $route->get("/dash/home", "ControllerApp:home");
 

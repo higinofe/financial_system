@@ -1,112 +1,76 @@
-// JQUERY INIT
-
 $(function () {
-    var ajaxResponseBaseTime = 3;
 
     // MOBILE MENU
+    $(".mobile_menu").click(function (event) {
+        event.preventDefault();
 
-    $(".mobile_menu").click(function (e) {
-        e.preventDefault();
+        $(".dash_sidebar").animate({left: "0"}, 200).addClass("mobile_menu_open");
+        $("body").addClass("mobile_body");
 
-        var menu = $(".dash_sidebar");
-        menu.animate({right: 0}, 200, function (e) {
-            $("body").css("overflow", "hidden");
-        });
-
-        menu.one("mouseleave", function () {
-            $(this).animate({right: '-260'}, 200, function (e) {
-                $("body").css("overflow", "auto");
-            });
-        });
-    });
-
-    //NOTIFICATION CENTER
-
-    $(".notification_center_open").click(function (e) {
-        e.preventDefault();
-
-        var center = $(".notification_center");
-        center.css("display", "block").animate({right: 0}, 200, function (e) {
-            $("body").css("overflow", "hidden");
-        });
-
-        center.one("mouseleave", function () {
-            $(this).animate({right: '-320'}, 200, function (e) {
-                $("body").css("overflow", "auto");
-                $(this).css("display", "none");
-            });
-        });
-    });
-
-    //FORMS
-
-    $("form:not('.ajax_off')").submit(function (e) {
-        e.preventDefault();
-
-        var form = $(this);
-        var load = $(".ajax_load");
-
-        if (typeof tinyMCE !== 'undefined') {
-            tinyMCE.triggerSave();
-        }
-
-        form.ajaxSubmit({
-            url: form.attr("action"),
-            type: "POST",
-            dataType: "json",
-            beforeSend: function () {
-                load.fadeIn(200).css("display", "flex");
-            },
-            uploadProgress: function (event, position, total, completed) {
-                var loaded = completed;
-                var load_title = $(".ajax_load_box_title");
-                load_title.text("Enviando (" + loaded + "%)");
-
-                form.find("input[type='file']").val(null);
-                if (completed >= 100) {
-                    load_title.text("Aguarde, carregando...");
+        $("html").on("click touchstart", ".mobile_body", function (e) {
+            var menu = $(".dash_sidebar");
+            if (menu.hasClass('mobile_menu_open') && !$(e.target).hasClass('mobile_menu')) {
+                if (!$(e.target).hasClass('dash_sidebar') && !$(e.target).parents().hasClass('dash_sidebar')) {
+                    menu.animate({left: '-260'}, 200).removeClass('mobile_menu_open');
                 }
-            },
-            success: function (response) {
-                //redirect
-                if (response.redirect) {
-                    window.location.href = response.redirect;
-                } else {
-                    load.fadeOut(200);
-                }
-
-                //reload
-                if (response.reload) {
-                    window.location.reload();
-                } else {
-                    load.fadeOut(200);
-                }
-
-                //message
-                if (response.message) {
-                    ajaxMessage(response.message, ajaxResponseBaseTime);
-                }
-
-                //image by fsphp mce upload
-                if (response.mce_image) {
-                    $('.mce_upload').fadeOut(200);
-                    tinyMCE.activeEditor.insertContent(response.mce_image);
-                }
-            },
-            complete: function () {
-                if (form.data("reset") === true) {
-                    form.trigger("reset");
-                }
-            },
-            error: function () {
-                var message = "<div class='message error icon-warning'>Desculpe mas não foi possível processar sua requisição...</div>";
-                ajaxMessage(message, 5);
-                load.fadeOut();
             }
         });
     });
 
+    // SEARCH CONTENT
+    $('.search_open').click(function (event) {
+        event.preventDefault();
+
+        $(".dash_content_search").animate({right: "0"}, 200).addClass("search_open");
+        $("body").addClass("search");
+
+        $("html").on("click touchstart", ".search", function (e) {
+            var search = $(".dash_content_search");
+            if (search.hasClass('search_open') && !$(e.target).hasClass('search_open')) {
+                if (!$(e.target).hasClass('dash_content_search') && !$(e.target).parents().hasClass('dash_content_search')) {
+                    search.animate({right: '-320px'}, 200).removeClass('search_open');
+                }
+            }
+        });
+
+        $("html").on("click", ".search_close", function (eventOther) {
+            eventOther.preventDefault();
+            $(".dash_content_search").animate({right: '-320px'}, 200).removeClass('search_open');
+        });
+    });
+
+    // COLLAPSE COMPONENT
+    $('.collapse').click(function (event) {
+        event.preventDefault();
+
+        var collapse = $(this).closest('.app_collapse');
+
+        $(collapse).find('.app_collapse_header > span').toggleClass('icon-plus-circle').toggleClass('icon-minus-circle');
+        $(collapse).find('.app_collapse_content').slideToggle(200, function () {
+            if ($(this).hasClass('d-none')) {
+                $(this).removeClass('d-none');
+            }
+        });
+    });
+
+    // COMPONENT TABS
+    $(".nav_tabs_item_link").click(function (event) {
+        event.preventDefault();
+
+        var targetTab = $(this).attr('href');
+        var componentNav = $(this).closest('.nav');
+
+        $(componentNav).find('.nav_tabs_item .active').removeClass('active');
+
+        $(this).addClass('active');
+
+        $(componentNav).find('.nav_tabs_content').children().hide();
+
+        $(componentNav).find(targetTab).show();
+    });
+
     // AJAX RESPONSE
+    var ajaxResponseBaseTime = 3;
 
     function ajaxMessage(message, time) {
         var ajaxMessage = $(message);
@@ -120,25 +84,107 @@ $(function () {
     }
 
     // AJAX RESPONSE MONITOR
-
     $(".ajax_response .message").each(function (e, m) {
         ajaxMessage(m, ajaxResponseBaseTime += 1);
     });
 
     // AJAX MESSAGE CLOSE ON CLICK
-
     $(".ajax_response").on("click", ".message", function (e) {
         $(this).effect("bounce").fadeOut(1);
     });
 
-    // MAKS
+    // SELECT2
+    $('.select2').select2({
+        language: "pt-BR"
+    });
 
+    // DATATABLES
+    $('#dataTable').DataTable({
+        responsive: true,
+        "pageLength": 25,
+        "language": {
+            "sEmptyTable": "Nenhum registro encontrado",
+            "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+            "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+            "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+            "sInfoPostFix": "",
+            "sInfoThousands": ".",
+            "sLengthMenu": "_MENU_ resultados por página",
+            "sLoadingRecords": "Carregando...",
+            "sProcessing": "Processando...",
+            "sZeroRecords": "Nenhum registro encontrado",
+            "sSearch": "Pesquisar",
+            "oPaginate": {
+                "sNext": "Próximo",
+                "sPrevious": "Anterior",
+                "sFirst": "Primeiro",
+                "sLast": "Último"
+            },
+            "oAria": {
+                "sSortAscending": ": Ordenar colunas de forma ascendente",
+                "sSortDescending": ": Ordenar colunas de forma descendente"
+            }
+        },
+    });
+
+    // MASK
+    var cellMaskBehavior = function (val) {
+        return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+    },
+    cellOptions = {
+        onKeyPress: function(val, e, field, options) {
+            field.mask(cellMaskBehavior.apply({}, arguments), options);
+        }
+    };
+
+    $('.mask-cell').mask(cellMaskBehavior, cellOptions);
+    $('.mask-phone').mask('(00) 0000-0000');
     $(".mask-date").mask('00/00/0000');
     $(".mask-datetime").mask('00/00/0000 00:00');
     $(".mask-month").mask('00/0000', {reverse: true});
     $(".mask-doc").mask('000.000.000-00', {reverse: true});
-    $(".mask-card").mask('0000  0000  0000  0000', {reverse: true});
-    $(".mask-money").mask('000.000.000.000.000,00', {reverse: true, placeholder: "0,00"});
+    $(".mask-cnpj").mask('00.000.000/0000-00', {reverse: true});
+    $(".mask-zipcode").mask('00000-000', {reverse: true});
+    $(".mask-money").mask('R$ 000.000.000.000.000,00', {reverse: true, placeholder: "R$ 0,00"});
+
+    // SEARCH ZIPCODE
+    $('.zip_code_search').blur(function () {
+
+        function emptyForm() {
+            $(".street").val("");
+            $(".neighborhood").val("");
+            $(".city").val("");
+            $(".state").val("");
+        }
+
+        var zip_code = $(this).val().replace(/\D/g, '');
+        var validate_zip_code = /^[0-9]{8}$/;
+
+        if (zip_code != "" && validate_zip_code.test(zip_code)) {
+
+            $(".street").val("");
+            $(".neighborhood").val("");
+            $(".city").val("");
+            $(".state").val("");
+
+            $.getJSON("https://viacep.com.br/ws/" + zip_code + "/json/?callback=?", function (data) {
+
+                if (!("erro" in data)) {
+                    $(".street").val(data.logradouro);
+                    $(".neighborhood").val(data.bairro);
+                    $(".city").val(data.localidade);
+                    $(".state").val(data.uf);
+                } else {
+                    emptyForm();
+                    alert("CEP não encontrado.");
+                }
+            });
+        } else {
+            emptyForm();
+            alert("Formato de CEP inválido.");
+        }
+    });
+
 });
 
 // TINYMCE INIT
@@ -157,7 +203,7 @@ tinyMCE.init({
         "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
         "save table contextmenu directionality emoticons template paste textcolor media"
     ],
-    toolbar: "styleselect | pastetext | removeformat |  bold | italic | underline | strikethrough | bullist | numlist | alignleft | aligncenter | alignright |  link | unlink | fsphpimage | code | fullscreen",
+    toolbar: "styleselect | pastetext | removeformat |  bold | italic | underline | strikethrough | bullist | numlist | alignleft | aligncenter | alignright |  link | unlink | code | fullscreen",
     style_formats: [
         {title: 'Normal', block: 'p'},
         {title: 'Titulo 3', block: 'h3'},
@@ -166,14 +212,14 @@ tinyMCE.init({
         {title: 'Código', block: 'pre', classes: 'brush: php;'}
     ],
     link_class_list: [
-        {title: 'None', value: ''},
-        {title: 'Blue CTA', value: 'btn btn_cta_blue'},
-        {title: 'Green CTA', value: 'btn btn_cta_green'},
-        {title: 'Yellow CTA', value: 'btn btn_cta_yellow'},
-        {title: 'Red CTA', value: 'btn btn_cta_red'}
+        {title: 'Nenhum', value: ''},
+        {title: 'Botão Verde', value: 'btn btn-green'},
+        {title: 'Botão Azul', value: 'btn btn-blue'},
+        {title: 'Botão Amarelo', value: 'btn btn-yellow'},
+        {title: 'Botão Vermelho', value: 'btn btn-red'}
     ],
     setup: function (editor) {
-        editor.addButton('fsphpimage', {
+        editor.addButton('laradevimage', {
             title: 'Enviar Imagem',
             icon: 'image',
             onclick: function () {

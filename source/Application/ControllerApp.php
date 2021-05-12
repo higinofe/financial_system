@@ -13,12 +13,12 @@ class ControllerApp extends shots
         
     }
 
-    public function enter($data)
+    public function theme($data)
     {
         $head = CONFIG_SITE_TITLE;
         
 
-        echo $this->view->render("enter", [
+        echo $this->view->render("_theme", [
             "head" => $head
         ]);
        
