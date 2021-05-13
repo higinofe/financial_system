@@ -11,17 +11,19 @@ $route = new Router(url());
 $route->namespace('Source\Application');
 
 $route->group(null);
-$route->get("/", "ControllerApp:theme");
-$route->get("/dash", "ControllerApp:dash");
-$route->get("/dash/home", "ControllerApp:home");
+$route->get("/", "ControllerApp:dash");
+
+$route->get("/lancamentos", "ControllerApp:userIndex");
+$route->get("/criacao", "ControllerApp:userCreate");
+
 
 $route->dispatch();
 
 $route->group("/ops");
 $route->get("/{errcode}", "Web:error");
 
-/*
 
+/*
 if ($route->error()) {
     $route->redirect("/ops/{$route->error()}");
 }

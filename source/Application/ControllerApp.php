@@ -13,38 +13,32 @@ class ControllerApp extends shots
         
     }
 
-    public function theme($data)
-    {
-        $head = CONFIG_SITE_TITLE;
-        
-
-        echo $this->view->render("_theme", [
-            "head" => $head
-        ]);
-       
-    }
-
-    public function teste()
-    {
-        echo '<h1>Ola teste</h>';
-
-    }
-
-    public function dash()
+    public function dash($data)
     {
         $head = CONFIG_SITE_TITLE;
 
-        echo $this->view->render("dash", [
-            "app" => "control/home",
+        echo $this->view->render("dashboard/index.php", [
             "head" => $head
-        ]);
-
+        ]);      
     }
 
-    public function home()
+    public function userIndex()
     {
-        echo $this->view->render("dash/home", [
-            ""
+        $head = CONFIG_SITE_TITLE;
+
+        echo $this->view->render("users/index.php",
+        [
+            "head" => $head
+        ]);
+    }
+
+    public function userCreate()
+    {
+        $head = CONFIG_SITE_TITLE;
+
+        echo $this->view->render("users/create.php",
+        [
+            "head" => $head
         ]);
 
     }

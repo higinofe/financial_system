@@ -85,11 +85,7 @@
         </div>
     </section>
 </div>
-<footer class="main_footer">
-    <div class="footer">
-    Todos os Direitos reservados!
-    </div>
-</footer>
+
 
 
 <script src="viewer/layout/assets/js/jquery.min.js"></script>
