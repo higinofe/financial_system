@@ -1,4 +1,5 @@
 <?php $v->layout("_theme"); ?>
+
 <section class="dash_content_app">
 
     <header class="dash_content_app_header">
@@ -56,7 +57,7 @@
 
                             <label class="label">
                                 <span class="legend">*Valor do Lançamento:</span>
-                                <input type="tel" class="mask-doc" name="document" placeholder="Valor do Lançamento"
+                                <input type="tel" class="" name="document" placeholder="Valor do Lançamento"
                                        value=""/>
                             </label>
                         </div>
@@ -64,7 +65,7 @@
                         <div class="label_g2">
                             <label class="label">
                                 <span class="legend">*Obeservação:</span>
-                                <input type="text" name="document_secondary" placeholder="Obeservação"
+                                <input type="text" name="teste" placeholder="Obeservação"
                                        value=""/>
                             </label>
 
@@ -73,7 +74,7 @@
                         <div class="label_g2">
                             <label class="label">
                                 <span class="legend">*Quantidade de parcelas:</span>
-                                <input type="text" name="place_of_birth" placeholder="Cidade de Nascimento"
+                                <input type="text" name="place_of_birth" placeholder="Quantidade de parcelas"
                                        value=""/>
                             </label>
                         </div>
@@ -84,8 +85,6 @@
                                 <input type="file" name="cover">
                             </label>
                         </div>                       
-
-                        <div class="app_collapse mt-2">
 
                     </div>
                 </div>

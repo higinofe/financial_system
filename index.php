@@ -7,25 +7,29 @@ use CoffeeCode\Router\Router;
 
 
 $route = new Router(url());
-
 $route->namespace('Source\Application');
 
+/**
+ * Rotas aplication
+ */
 $route->group(null);
 $route->get("/", "ControllerApp:dash");
-
-$route->get("/lancamentos", "ControllerApp:userIndex");
+$route->get("/fluxo", "ControllerApp:userIndex");
 $route->get("/criacao", "ControllerApp:userCreate");
+$route->post("/criacao", "ControllerApp:userCreate");
+/**
+ * Error
+ */
+$route->group("/ops");
+$route->get("/{errcode}", "ControllerApp:error");
 
 
 $route->dispatch();
-
-$route->group("/ops");
-$route->get("/{errcode}", "Web:error");
-
-
 /*
+
 if ($route->error()) {
     $route->redirect("/ops/{$route->error()}");
-}
-*/
+}*/
+
+
 ob_end_flush();

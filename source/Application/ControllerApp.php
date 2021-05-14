@@ -32,8 +32,9 @@ class ControllerApp extends shots
         ]);
     }
 
-    public function userCreate()
+    public function userCreate($data)
     {
+        var_dump($data);
         $head = CONFIG_SITE_TITLE;
 
         echo $this->view->render("users/create.php",
@@ -41,6 +42,11 @@ class ControllerApp extends shots
             "head" => $head
         ]);
 
+    }
+
+    public function error()
+    {
+        echo "OPS ERRO!";
     }
 
 }

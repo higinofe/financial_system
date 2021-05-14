@@ -13,7 +13,7 @@ define("CONFIG_PASSW", "");
  * URL CONFIG
  */
 
- define('CONFIG_URL', 'localhost/html');
+ define('CONFIG_URL', 'https://www.localhost/html');
  define('CONFIG_URL_THEME', 'viewer/layout');
 
  /**

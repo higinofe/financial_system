@@ -37,30 +37,20 @@
 
         <ul class="dash_sidebar_nav">
             <li class="dash_sidebar_nav_item active">
-                <a class="icon-tachometer" href="">Dashboard</a>
+                <a class="icon-tachometer" href=" <?= url(); ?>">Dashboard</a>
             </li>
-            <li class="dash_sidebar_nav_item"><a class="icon-users" href="dashboard.php?app=users/index">Clientes</a>
+            <li class="dash_sidebar_nav_item"><a class="icon-users" href="">Pagar e Receber</a>
                 <ul class="dash_sidebar_nav_submenu">
-                    <li class=""><a href="dashboard.php?app=users/index">Ver Todos</a></li>
-                    <li class=""><a href="dashboard.php?app=companies/index">Empresas</a></li>
-                    <li class=""><a href="dashboard.php?app=users/team">Time</a></li>
-                    <li class=""><a href="dashboard.php?app=users/create">Criar Novo</a></li>
+                    <li class=""><a href="<?= url("fluxo"); ?>">Fluxo de Caixa</a></li>
+                    <li class=""><a href="<?= url("criacao"); ?>">Lançametos</a></li>
                 </ul>
             </li>
-            <li class="dash_sidebar_nav_item"><a class="icon-home" href="dashboard.php?app=properties/index">Imóveis</a>
+            <li class="dash_sidebar_nav_item"><a class="icon-file-text" href="dashboard.php?app=contracts/index">Simulações</a>
                 <ul class="dash_sidebar_nav_submenu">
-                    <li class=""><a href="dashboard.php?app=properties/index">Ver Todos</a></li>
-                    <li class=""><a href="dashboard.php?app=properties/create">Criar Novo</a></li>
+                    <li class=""><a href=" <?= url(); ?>">Ver Simulaçoes</a></li>
+                    <li class=""><a href=" <?= url(); ?> ">Criar Simulção</a></li>
                 </ul>
             </li>
-            <li class="dash_sidebar_nav_item"><a class="icon-file-text" href="dashboard.php?app=contracts/index">Contratos</a>
-                <ul class="dash_sidebar_nav_submenu">
-                    <li class=""><a href="dashboard.php?app=contracts/index">Ver Todos</a></li>
-                    <li class=""><a href="dashboard.php?app=contracts/create">Criar Novo</a></li>
-                </ul>
-            </li>
-            <li class="dash_sidebar_nav_item"><a class="icon-reply" href="">Ver Site</a></li>
-            <li class="dash_sidebar_nav_item"><a class="icon-sign-out on_mobile" href="" target="_blank">Sair</a></li>
         </ul>
 
     </aside>

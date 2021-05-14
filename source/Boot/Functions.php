@@ -10,12 +10,13 @@
  * @param string $path
  * @return string
  */
-function url(string $path = null): string
+function url($path = null)
 {
     if($path) {
-            return CONFIG_URL . "/" . ($path[0] == "/" ? mb_substr($path, 1) : $path);
-        }
-        return CONFIG_URL;
+        return CONFIG_URL . "/{$path}";
+    }
+
+    return CONFIG_URL;
 }
 
 /**
