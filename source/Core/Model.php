@@ -2,6 +2,8 @@
 
 namespace source\Core;
 
+use Source\Core\Connect;
+
 abstract class Model
 {
        protected $data;
@@ -122,7 +124,7 @@ abstract class Model
         return $stmt->rowCount();
     }
 
-    protected function create($data)
+    protected function create(array $data)
     {
         try {
             $columns = implode(", ", array_keys($data));

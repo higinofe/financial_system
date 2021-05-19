@@ -4,7 +4,7 @@
  * BANCO DE DADOS
  */
 define("CONFIG_HOST", "localhost");
-define("CONFIG_NAME", "finacial");
+define("CONFIG_NAME", "financial");
 define("CONFIG_USER", "root");
 define("CONFIG_PASSW", "");
 

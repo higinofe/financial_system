@@ -3,6 +3,7 @@
 namespace Source\Application;
 
 use Source\Core\shots;
+use Source\Models\box_flow\payments;
 
 class ControllerApp extends shots
 {
@@ -24,6 +25,9 @@ class ControllerApp extends shots
 
     public function userIndex()
     {
+        $paymentsList = new payments();
+        $paymentsList->consultPayments();
+        var_dump($paymentsList);
         $head = CONFIG_SITE_TITLE;
 
         echo $this->view->render("users/index.php",
@@ -34,14 +38,18 @@ class ControllerApp extends shots
 
     public function userCreate($data)
     {
-        var_dump($data);
+        if(!empty($data)){
+        $data = (object) $data;
+        $payments = new payments;
+        $payments->createPayments($data);
+        }
+
         $head = CONFIG_SITE_TITLE;
 
         echo $this->view->render("users/create.php",
         [
             "head" => $head
         ]);
-
     }
 
     public function error()

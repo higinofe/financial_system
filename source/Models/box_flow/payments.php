@@ -9,18 +9,24 @@ class payments extends Model
     public function __construct()
     {
         parent::__construct("payments", ["id"], 
-            ['name', 'type', 'value', 'date']);        
+            ['title', 'category', 'valor', 'obs']);        
     }
  
     public function createPayments($data)
-    {
-        $payments = (object) $data;
-        $this->name = $payments->name;
-        $this->type = $payments->type;
-        $this->value = $payments->value;
-        $this->date = $payments->date;
+    { 
+        $this->title = $data->title;
+        $this->category = $data->category;
+        $this->valor = $data->valor;
+        $this->obs = $data->obs;
+        $this->placed = $data->placed;
         $this->save();
         return $this;
     }
+
+    public function consultPayments()
+    {
+        return (new payments())->findById(79);
+    }
+
 
 }

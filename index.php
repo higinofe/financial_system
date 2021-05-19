@@ -5,7 +5,6 @@ require __DIR__ . '/vendor/autoload.php';
 
 use CoffeeCode\Router\Router;
 
-
 $route = new Router(url());
 $route->namespace('Source\Application');
 
@@ -19,7 +18,7 @@ $route->get("/criacao", "ControllerApp:userCreate");
 $route->post("/criacao", "ControllerApp:userCreate");
 /**
  * Error
- */
+ */ 
 $route->group("/ops");
 $route->get("/{errcode}", "ControllerApp:error");
 

@@ -29,26 +29,15 @@
             <form class="app_form" action="" method="post" enctype="multipart/form-data">
                 <div class="nav_tabs_content">
                     <div id="data">
-                        <div class="label_gc">
-                            <span class="legend">Tipo:</span>
-                            <label class="label">
-                                <input type="checkbox" name="lessor"><span>Crédito</span>
-                            </label>
-
-                            <label class="label">
-                                <input type="checkbox" name="lessee"><span>Debito</span>
-                            </label>
-                        </div>
-
                         <label class="label">
                             <span class="legend">*Titulo Lançamento:</span>
-                            <input type="text" name="name" placeholder="Titulo do Lançamento" value=""/>
+                            <input type="text" name="title" placeholder="Titulo do Lançamento" value="" required/>
                         </label>
 
                         <div class="label_g2">
                             <label class="label">
                                 <span class="legend">*Categoria:</span>
-                                <select name="genre">
+                                <select name="category" required>
                                     <option value="male">Salário</option>
                                     <option value="female">diversos</option>
                                     <option value="other">Cartão de crédito</option>
@@ -57,26 +46,25 @@
 
                             <label class="label">
                                 <span class="legend">*Valor do Lançamento:</span>
-                                <input type="tel" class="" name="document" placeholder="Valor do Lançamento"
-                                       value=""/>
+                                <input type="tel" class="" name="valor" placeholder="Valor do Lançamento" 
+                                       value="" required/>
                             </label>
-                        </div>
-
-                        <div class="label_g2">
-                            <label class="label">
-                                <span class="legend">*Obeservação:</span>
-                                <input type="text" name="teste" placeholder="Obeservação"
-                                       value=""/>
-                            </label>
-
                         </div>
 
                         <div class="label_g2">
                             <label class="label">
                                 <span class="legend">*Quantidade de parcelas:</span>
-                                <input type="text" name="place_of_birth" placeholder="Quantidade de parcelas"
+                                <input type="text" name="placed" placeholder="Quantidade de parcelas"
                                        value=""/>
                             </label>
+                        </div>
+                        <div class="label_g2">
+                            <label class="label">
+                                <span class="legend">*Obeservação:</span>
+                                <input type="text" name="obs" placeholder="Obeservação"
+                                       value="" required />
+                            </label>
+
                         </div>
 
                         <div class="label_g2">
