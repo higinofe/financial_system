@@ -74,7 +74,9 @@ abstract class Model
 
     public function findById($id, $columns = "*")
     {
+        
         $find = $this->find("id = :id", "id={$id}", $columns);
+        
         return $find->fetch();
     }
 

@@ -25,14 +25,27 @@ class ControllerApp extends shots
 
     public function userIndex()
     {
-        $paymentsList = new payments();
-        $paymentsList->consultPayments();
-        var_dump($paymentsList);
+        
+        /*$contArr = count($paymentsList);
+        $payments= [];
+        for($i=0; $i<$contArr; $i++)
+        {
+            $payments['result'] = (array)[
+                'id' => $paymentsList[$i]->id,
+                'title' => $paymentsList[$i]->title,
+                'category' => $paymentsList[$i]->category,
+                'valor' => $paymentsList[$i]->valor,
+                'obs' => $paymentsList[$i]->obs
+            ];
+        }
+        var_dump($payments);
+        */   
         $head = CONFIG_SITE_TITLE;
 
         echo $this->view->render("users/index.php",
         [
-            "head" => $head
+            "head" => $head,
+            "paymente" => (new payments())->findById(79)
         ]);
     }
 

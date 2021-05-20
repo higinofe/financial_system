@@ -23,9 +23,14 @@ class payments extends Model
         return $this;
     }
 
+    public function consultPaymentId()
+    {
+        return (new payments())->findById($this->id);
+    }
+
     public function consultPayments()
     {
-        return (new payments())->findById(79);
+        return (new payments())->fetch();
     }
 
 

@@ -34,7 +34,7 @@
                 </thead>
                     <tbody>
                     <tr>
-                        <td><a href="" class="text-orange">Casa</a></td>
+                        <td><a href="" class="text-orange"><?= $paymente->id; ?></a></td>
                         <td><a href="" class="text-orange">Financiamento Imobiliario</a></td>
                         <td>47/420</td>
                         <td><?= date('d/m/Y'); ?></td>
