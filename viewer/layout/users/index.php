@@ -33,13 +33,16 @@
                     </tr>
                 </thead>
                     <tbody>
+                    <?php foreach($paymente as $result): ?>
                     <tr>
-                        <td><a href="" class="text-orange"><?= $paymente->id; ?></a></td>
-                        <td><a href="" class="text-orange">Financiamento Imobiliario</a></td>
-                        <td>47/420</td>
-                        <td><?= date('d/m/Y'); ?></td>
-                        <td>NT</td>
+                        <td><a href="" class="text-orange"><?= $result->title; ?></a></td>
+                        <td><a href="" class="text-orange"><?= $result->category; ?></a></td>
+                        <td><?= $result->placed; ?></td>
+                        <td><?= date('Y-m-d'); ?></td>
+                        <td><?= $result->obs ?></td>
+
                     </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>

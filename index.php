@@ -16,6 +16,8 @@ $route->get("/", "ControllerApp:dash");
 $route->get("/fluxo", "ControllerApp:userIndex");
 $route->get("/criacao", "ControllerApp:userCreate");
 $route->post("/criacao", "ControllerApp:userCreate");
+$route->get("/categoria", "ControllerApp:category" );
+$route->post("/categoria", "ControllerApp:category" );
 /**
  * Error
  */ 

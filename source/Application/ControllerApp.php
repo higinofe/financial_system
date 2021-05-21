@@ -3,6 +3,7 @@
 namespace Source\Application;
 
 use Source\Core\shots;
+use Source\Models\box_flow\category;
 use Source\Models\box_flow\payments;
 
 class ControllerApp extends shots
@@ -24,8 +25,7 @@ class ControllerApp extends shots
     }
 
     public function userIndex()
-    {
-        
+    {       
         /*$contArr = count($paymentsList);
         $payments= [];
         for($i=0; $i<$contArr; $i++)
@@ -45,7 +45,7 @@ class ControllerApp extends shots
         echo $this->view->render("users/index.php",
         [
             "head" => $head,
-            "paymente" => (new payments())->findById(79)
+            "paymente" => (new payments())->find()->fetch(true)
         ]);
     }
 
@@ -63,6 +63,21 @@ class ControllerApp extends shots
         [
             "head" => $head
         ]);
+    }
+
+    public function category($data)
+    {
+        $data = (object)$data;
+        $category = new category;
+        $category->createcategory($data);
+
+
+        $head = CONFIG_SITE_TITLE;
+        echo $this->view->render("category/create.php",
+        [
+            "head" => $head
+        ]);
+
     }
 
     public function error()

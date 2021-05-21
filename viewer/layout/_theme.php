@@ -45,6 +45,12 @@
                     <li class=""><a href="<?= url("criacao"); ?>">Lançamentos</a></li>
                 </ul>
             </li>
+            <li class="dash_sidebar_nav_item"><a class="icon-users" href="">Lancamentos</a>
+                <ul class="dash_sidebar_nav_submenu">
+                    <li class=""><a href="<?= url("fluxo"); ?>">Categoria</a></li>
+                    <li class=""><a href="<?= url("criacao"); ?>">Teste</a></li>
+                </ul>
+            </li>
             <li class="dash_sidebar_nav_item"><a class="icon-file-text" href="dashboard.php?app=contracts/index">Simulações</a>
                 <ul class="dash_sidebar_nav_submenu">
                     <li class=""><a href=" <?= url(); ?>">Ver Simulaçoes</a></li>
