@@ -24,53 +24,42 @@ class ControllerApp extends shots
         ]);      
     }
 
-    public function userIndex()
-    {       
-        /*$contArr = count($paymentsList);
-        $payments= [];
-        for($i=0; $i<$contArr; $i++)
-        {
-            $payments['result'] = (array)[
-                'id' => $paymentsList[$i]->id,
-                'title' => $paymentsList[$i]->title,
-                'category' => $paymentsList[$i]->category,
-                'valor' => $paymentsList[$i]->valor,
-                'obs' => $paymentsList[$i]->obs
-            ];
-        }
-        var_dump($payments);
-        */   
+    public function fluxoIndex()
+    {
         $head = CONFIG_SITE_TITLE;
 
-        echo $this->view->render("users/index.php",
+        echo $this->view->render("fluxo/index.php",
         [
             "head" => $head,
             "paymente" => (new payments())->find()->fetch(true)
         ]);
     }
 
-    public function userCreate($data)
+    public function fluxoCreate($data)
     {
+        
         if(!empty($data)){
         $data = (object) $data;
         $payments = new payments;
         $payments->createPayments($data);
+
         }
 
         $head = CONFIG_SITE_TITLE;
-
-        echo $this->view->render("users/create.php",
+        echo $this->view->render("fluxo/create.php",
         [
-            "head" => $head
+            "head" => $head,
+            "categorys" => (new category())->find()->fetch(true)
         ]);
     }
 
     public function category($data)
     {
-        $data = (object)$data;
-        $category = new category;
-        $category->createcategory($data);
-
+        if(!empty($data)){
+            $data = (object)$data;
+            $category = new category;
+            $category->createcategory($data);
+        }
 
         $head = CONFIG_SITE_TITLE;
         echo $this->view->render("category/create.php",

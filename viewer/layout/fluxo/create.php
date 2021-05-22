@@ -38,9 +38,9 @@
                             <label class="label">
                                 <span class="legend">*Categoria:</span>
                                 <select name="category" required>
-                                    <option value="male">Salário</option>
-                                    <option value="female">diversos</option>
-                                    <option value="other">Cartão de crédito</option>
+                                <?php foreach($categorys as $result): ?>
+                                    <option value="<?= $result->nome; ?>"><?= $result->nome; ?></option>
+                                <?php endforeach; ?>
                                 </select>
                             </label>
 

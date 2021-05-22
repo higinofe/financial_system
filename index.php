@@ -13,9 +13,9 @@ $route->namespace('Source\Application');
  */
 $route->group(null);
 $route->get("/", "ControllerApp:dash");
-$route->get("/fluxo", "ControllerApp:userIndex");
-$route->get("/criacao", "ControllerApp:userCreate");
-$route->post("/criacao", "ControllerApp:userCreate");
+$route->get("/fluxo", "ControllerApp:fluxoIndex");
+$route->get("/criacao", "ControllerApp:fluxoCreate");
+$route->post("/criacao", "ControllerApp:fluxoCreate");
 $route->get("/categoria", "ControllerApp:category" );
 $route->post("/categoria", "ControllerApp:category" );
 /**
