@@ -39,15 +39,16 @@
                                 <span class="legend">*Categoria:</span>
                                 <select name="category" required>
                                 <?php foreach($categorys as $result): ?>
-                                    <option value="<?= $result->nome; ?>"><?= $result->nome; ?></option>
+                                    <option value="<?= $result->name; ?>"><?= $result->name; ?></option>
                                 <?php endforeach; ?>
                                 </select>
                             </label>
-
                             <label class="label">
-                                <span class="legend">*Valor do Lançamento:</span>
-                                <input type="tel" class="" name="valor" placeholder="Valor do Lançamento" 
-                                       value="" required/>
+                                <span class="legend">*Tipo Lançamento:</span>
+                                <select name="tipLanc" required>
+                                    <option value="fixed">Fixo</option>
+                                    <option value="unic">Unico</option>
+                                </select>
                             </label>
                         </div>
 
@@ -57,16 +58,27 @@
                                 <input type="text" name="placed" placeholder="Quantidade de parcelas"
                                        value=""/>
                             </label>
+                            <label class="label">
+                                <span class="legend">*Valor do Lançamento:</span>
+                                <input type="tel" class="" name="valor" placeholder="Valor do Lançamento" 
+                                       value="" required/>
+                            </label>
                         </div>
+
                         <div class="label_g2">
                             <label class="label">
-                                <span class="legend">*Obeservação:</span>
-                                <input type="text" name="obs" placeholder="Obeservação"
-                                       value="" required />
+                                <span class="legend">*tipo de Lançamentos:</span>
+                                    <select name="category" required>
+                                        <option value="fixed"></option>
+                                        <option value="inic"></option>
+                                    </select>
                             </label>
-
+                            <label class="label">
+                                    <span class="legend">*Obeservação:</span>
+                                    <input type="text" name="obs" placeholder="Obeservação"
+                                    value="" required />
+                            </label>
                         </div>
-
                         <div class="label_g2">
                             <label class="label">
                                 <span class="legend">Comprovante de pagamento: </span>
