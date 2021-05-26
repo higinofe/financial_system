@@ -44,51 +44,72 @@
                                 </select>
                             </label>
                             <label class="label">
-                                <span class="legend">*Tipo Lançamento:</span>
-                                <select name="tipLanc" required>
-                                    <option value="fixed">Fixo</option>
-                                    <option value="unic">Unico</option>
-                                </select>
-                            </label>
-                        </div>
-
-                        <div class="label_g2">
-                            <label class="label">
                                 <span class="legend">*Quantidade de parcelas:</span>
-                                <input type="text" name="placed" placeholder="Quantidade de parcelas"
+                                <input type="number" name="placed" placeholder="Quantidade de parcelas" autocomplete="off"
                                        value=""/>
                             </label>
+                        </div>
+                        <div class="label_g2">
                             <label class="label">
-                                <span class="legend">*Valor do Lançamento:</span>
-                                <input type="tel" class="" name="valor" placeholder="Valor do Lançamento" 
-                                       value="" required/>
+                                <span class="field icon-money">Valor do Lançamento:</span>
+                                <input class="radius mask-money" type="text" name="description" required/>
                             </label>
+                            <label class = "label">
+                                <span class="field icon-filter">Data Vencimento:</span>
+                                <input class="radius masc-date" type="date" name="due_at" required/>
+                            </label>  
                         </div>
 
                         <div class="label_g2">
-                            <label class="label">
-                                <span class="legend">*tipo de Lançamentos:</span>
-                                    <select name="category" required>
-                                        <option value="fixed"></option>
-                                        <option value="inic"></option>
-                                    </select>
-                            </label>
                             <label class="label">
                                     <span class="legend">*Obeservação:</span>
                                     <input type="text" name="obs" placeholder="Obeservação"
                                     value="" required />
                             </label>
+                            <div class="label_check">
+                            <p class="field icon-exchange">Repetição:</p>
+
+                            <label class="check"
+                                data-checkbox="true"
+                                data-slideup=".repeate_item_expense, .repeate_item_income">
+                                <input type="radio" name="repeat" value="" checked> Única
+                            </label>
+
+                            <label data-checkbox="true"
+                                data-slideup=".repeate_item_expense"
+                                data-slidedown=".repeate_item_income">
+                                <input type="radio" name="repeat" value="income"> Fixa
+                            </label>
+
+                            <label data-checkbox="true"
+                                data-slideup=".repeate_item_income"
+                                data-slidedown=".repeate_item_expense">
+                                <input type="radio" name="repeat" value="expense"> Parcelada
+                            </label>
+                        </div>
+
+                        <label class="repeate_item repeate_item_income" style="display: none">
+                            <select name="period">
+                                <option value="month">&ofcir; Mensal</option>
+                                <option value="year">&ofcir; Anual</option>
+                            </select>
+                        </label>
+
+                        <label class="repeate_item repeate_item_expense" style="display: none">
+                            <input class="radius" type="number" min="1" placeholder="1 parcela" name="enrollments"/>
+                        </label>
+                 </div>  
                         </div>
                         <div class="label_g2">
                             <label class="label">
                                 <span class="legend">Comprovante de pagamento: </span>
                                 <input type="file" name="cover">
                             </label>
-                        </div>                       
+                        </div>    
+                                      
 
                     </div>
                 </div>
-
                 <div class="text-right mt-2">
                     <button class="btn btn-large btn-green icon-check-square-o" type="submit">Salvar Alterações
                     </button>

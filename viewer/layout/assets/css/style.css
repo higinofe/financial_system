@@ -519,7 +519,7 @@ input:-webkit-autofill {
     justify-content: space-between;
   }
   .app_form .label_g4 .label {
-    flex-basis: calc(50% - 10px);
+    flex-basis: 10px;
   }
 
   .label_g5 div {
@@ -532,6 +532,9 @@ input:-webkit-autofill {
   }
   .app_form .label_g2 .label {
     flex-basis: calc(50% - 10px);
+  }
+  .app_form .label_g2 .labelsel {
+    flex-basis: calc(10% - 10px);
   }
   .app_form .label_g2 .label:first-child {
     margin-right: 20px;
@@ -1310,6 +1313,79 @@ input:-webkit-autofill {
   margin-left: -110px;
   margin-top: -40px;
   
+}
+
+.app_form .label_check label {
+  display: inline-block;
+  margin-left: var(--area-normal);
+  font-size: var(--font-small);
+  margin-top: 5px;
+  color: #888888;
+}
+.app_form .label_check label input {
+  display: none;
+}
+.app_form .label_check label:before {
+  content: "✓";
+  font-weight: var(--weight-black);
+  color: #ffffff;
+  text-align: center;
+
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  padding: 2px;
+  background: #ffffff;
+  border: 2px solid #cccccc;
+
+  margin-right: 5px;
+  vertical-align: middle;
+  margin-top: -3px;
+
+  font-size: 1.1em;
+  line-height: 0.9;
+
+  -webkit-border-radius: var(--radius-normal);
+  -moz-border-radius: var(--radius-normal);
+  border-radius: var(--radius-normal);
+}
+
+.app_form .label_check label.check:before {
+  background: var(--color-green);
+  border-color: var(--color-green);
+}
+
+.app_form .label_check label:first-of-type {
+  margin-left: 0;
+}
+
+.app_modal_expense form .label_check label.check:before {
+  background: var(--color-red);
+  border-color: var(--color-red);
+}
+.app_launch_item .price .check {
+  margin-left: var(--area-small);
+  font-size: 1.3em;
+  cursor: pointer;
+}
+
+.app_widget_balance .balance .check {
+  font-size: 1.4em;
+  margin-left: 8px;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.app_widget_balance .balance .check:hover,
+.app_widget_balance .balance .check.active {
+    opacity: 1;
+}
+.app_widget_balance .balance.positive .check {
+  color: var(--color-green);
+}
+
+.app_widget_balance .balance.negative .check {
+  color: var(--color-red);
 }
 
 /*# sourceMappingURL=style.css.map */

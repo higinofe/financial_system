@@ -247,3 +247,25 @@ tinyMCE.init({
     remove_script_host: false,
     paste_as_text: true
 });
+
+$("[data-checkbox]").click(function (e) {
+    var checkbox = $(this);
+    checkbox.parent().find("label").removeClass("check");
+    if (checkbox.find("input").is(':checked')) {
+        checkbox.addClass("check");
+    } else {
+        checkbox.removeClass("check");
+    }
+});
+
+$("[data-slidedown]").click(function (e) {
+    var clicked = $(this);
+    var slidedown = clicked.data("slidedown");
+    $(slidedown).slideDown(effecttime);
+});
+
+$("[data-slideup]").click(function (e) {
+    var clicked = $(this);
+    var slideup = clicked.data("slideup");
+    $(slideup).slideUp(effecttime);
+});
