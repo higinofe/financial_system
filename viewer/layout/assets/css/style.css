@@ -1328,7 +1328,7 @@ input:-webkit-autofill {
 .app_form .label_check label:before {
   content: "✓";
   font-weight: var(--weight-black);
-  color: #ffffff;
+  color: #000000;
   text-align: center;
 
   display: inline-block;

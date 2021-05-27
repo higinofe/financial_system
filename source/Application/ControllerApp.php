@@ -5,6 +5,7 @@ namespace Source\Application;
 use Source\Core\shots;
 use Source\Models\box_flow\category;
 use Source\Models\box_flow\payments;
+use Source\Models\box_flow\responsible;
 
 class ControllerApp extends shots
 {
@@ -42,14 +43,14 @@ class ControllerApp extends shots
         $data = (object) $data;
         $payments = new payments;
         $payments->createPayments($data);
-
-        }
+        } 
 
         $head = CONFIG_SITE_TITLE;
         echo $this->view->render("fluxo/create.php",
         [
             "head" => $head,
-            "categorys" => (new category())->find()->fetch(true)
+            "categorys" => (new category())->find()->fetch(true),
+            "responsible" => (new responsible())->find()->fetch(true)
         ]);
     }
 

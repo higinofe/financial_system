@@ -39,27 +39,47 @@ INSERT IGNORE INTO `category` (`id`, `id_cat`, `name`, `date`) VALUES
 -- Copiando estrutura para tabela financial.payments
 CREATE TABLE IF NOT EXISTS `payments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_user` varchar(50),
-  `centcusto` int(11) DEFAULT NULL,
+  `id_user` int(11) unsigned DEFAULT NULL,
   `title` varchar(100) DEFAULT NULL,
-  `valor` float DEFAULT NULL,
-  `type` varchar(50) DEFAULT NULL,
+  `centcusto` varchar(50) DEFAULT NULL,
+  `placed` varchar(50) DEFAULT NULL,
+  `value` float DEFAULT NULL,
+  `due_at` date DEFAULT NULL,
   `obs` varchar(50) DEFAULT NULL,
-  `portion` int(3) DEFAULT NULL,
+  `rep` varchar(50) DEFAULT NULL,
+  `responsible` varchar(50) DEFAULT NULL,
   `status` varchar(50) DEFAULT NULL,
-  `duedata` date DEFAULT NULL,
   `date` date DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `category` (`centcusto`),
-  KEY `id_user` (`id_user`),
-  CONSTRAINT `category` FOREIGN KEY (`centcusto`) REFERENCES `category` (`id_cat`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=utf8mb4 COMMENT='tabela de pagamentos ';
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf8mb4 COMMENT='tabela de pagamentos ';
 
--- Copiando dados para a tabela financial.payments: ~1 rows (aproximadamente)
+-- Copiando dados para a tabela financial.payments: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `payments` DISABLE KEYS */;
-INSERT IGNORE INTO `payments` (`id`, `id_user`, `centcusto`, `title`, `valor`, `type`, `obs`, `portion`, `status`, `duedata`, `date`) VALUES
-	(94, '1', 1, 'Salario', 500.3, 'fixed_debit', 'Salario do dia 5', 0, 'ok', '2021-05-24', '2021-05-24');
+INSERT IGNORE INTO `payments` (`id`, `id_user`, `title`, `centcusto`, `placed`, `value`, `due_at`, `obs`, `rep`, `responsible`, `status`, `date`) VALUES
+	(94, 1, 'Salario', '1', '0', 500.3, '2021-05-24', 'Salario do dia 5', NULL, NULL, 'ok', '2021-05-24'),
+	(97, NULL, 'title', 'centcusto', 'placed', 0, '2020-01-01', 'obs', 'repeat', 'responsible', NULL, NULL),
+	(98, NULL, 'Casa', 'Despesas', '10', 100, '2021-05-13', 'casa ', 'single', 'Fernando Higino', NULL, NULL),
+	(99, NULL, 'Casa', 'Despesas', '10', 100, '2021-05-13', 'casa ', 'single', 'Fernando Higino', NULL, NULL),
+	(100, NULL, 'teste', 'salario', '10', 10, '2021-05-21', 'fgdfgdfg', 'single', 'Fernando Higino', NULL, '2021-05-27'),
+	(101, NULL, 'teste', 'salario', '10', 10, '2021-05-27', 'fhfghfgh', 'single', 'Fernando Higino', NULL, '2021-05-27'),
+	(102, NULL, 'teste', 'salario', '10', 100, '2021-05-21', 'hgjghjghj', 'single', 'Fernando Higino', 'pending', '2021-05-27'),
+	(103, NULL, 'dfsdfsdf', 'Cartões', '10', 5, '2021-05-07', 'jhjghjghj', 'single', 'Fernando Higino', 'pending', '2021-05-27');
 /*!40000 ALTER TABLE `payments` ENABLE KEYS */;
+
+-- Copiando estrutura para tabela financial.responsible
+CREATE TABLE IF NOT EXISTS `responsible` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_resp` int(11) DEFAULT NULL,
+  `nome` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+-- Copiando dados para a tabela financial.responsible: ~2 rows (aproximadamente)
+/*!40000 ALTER TABLE `responsible` DISABLE KEYS */;
+INSERT IGNORE INTO `responsible` (`id`, `id_resp`, `nome`) VALUES
+	(1, 1, 'Fernando Higino'),
+	(2, 2, 'Renata Furtado');
+/*!40000 ALTER TABLE `responsible` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela financial.users
 CREATE TABLE IF NOT EXISTS `users` (
@@ -70,8 +90,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(50) DEFAULT NULL,
   `active` enum('0','1') DEFAULT NULL,
   `date` date DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id_user` (`id_user`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela financial.users: ~1 rows (aproximadamente)

@@ -22,7 +22,7 @@
         <div class="nav">
             <ul class="nav_tabs">
                 <li class="nav_tabs_item">
-                    <a href="#data" class="nav_tabs_item_link active">Dados Cadastrais</a>
+                    <a href="#data" class="nav_tabs_item_link active">Lançamentos</a>
                 </li>
             </ul>
 
@@ -52,14 +52,13 @@
                         <div class="label_g2">
                             <label class="label">
                                 <span class="field icon-money">Valor do Lançamento:</span>
-                                <input class="radius mask-money" type="text" name="description" required/>
+                                <input class="radius mask-money" type="text" name="value" required/>
                             </label>
                             <label class = "label">
                                 <span class="field icon-filter">Data Vencimento:</span>
                                 <input class="radius masc-date" type="date" name="due_at" required/>
                             </label>  
                         </div>
-
                         <div class="label_g2">
                             <label class="label">
                                     <span class="legend">*Obeservação:</span>
@@ -72,7 +71,7 @@
                             <label class="check"
                                 data-checkbox="true"
                                 data-slideup=".repeate_item_expense, .repeate_item_income">
-                                <input type="radio" name="repeat" value="" checked> Única
+                                <input type="radio" name="repeat" value="single" checked> Única
                             </label>
 
                             <label data-checkbox="true"
@@ -80,31 +79,33 @@
                                 data-slidedown=".repeate_item_income">
                                 <input type="radio" name="repeat" value="income"> Fixa
                             </label>
-
-                            <label data-checkbox="true"
-                                data-slideup=".repeate_item_income"
-                                data-slidedown=".repeate_item_expense">
-                                <input type="radio" name="repeat" value="expense"> Parcelada
-                            </label>
                         </div>
-
-                        <label class="repeate_item repeate_item_income" style="display: none">
-                            <select name="period">
-                                <option value="month">&ofcir; Mensal</option>
-                                <option value="year">&ofcir; Anual</option>
-                            </select>
-                        </label>
-
-                        <label class="repeate_item repeate_item_expense" style="display: none">
-                            <input class="radius" type="number" min="1" placeholder="1 parcela" name="enrollments"/>
-                        </label>
                  </div>  
                         </div>
                         <div class="label_g2">
-                            <label class="label">
-                                <span class="legend">Comprovante de pagamento: </span>
-                                <input type="file" name="cover">
+                        <label class="label">
+                                <span class="legend">*Responsavel:</span>
+                                <select name="responsible" required>
+                                <?php foreach($responsible as $result): ?>
+                                    <option value="<?= $result->nome; ?>"><?= $result->nome; ?></option>
+                                <?php endforeach; ?>
+                                </select>
+                            </label> 
+                        <div class="label_check">
+                            <p>Satus:</p>
+
+                            <label class="check"
+                                data-checkbox="true"
+                                data-slideup=".repeate_item_expense, .repeate_item_income">
+                                <input type="radio" name="status" value="pending" checked> Pendente
                             </label>
+
+                            <label data-checkbox="true"
+                                data-slideup=".repeate_item_expense"
+                                data-slidedown=".repeate_item_income">
+                                <input type="radio" name="status" value="paid"> Pago
+                            </label>
+                        </div>
                         </div>    
                                       
 
