@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `category` (
   `date` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `idcategoria` (`id_cat`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela financial.category: ~5 rows (aproximadamente)
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
@@ -33,7 +33,9 @@ INSERT IGNORE INTO `category` (`id`, `id_cat`, `name`, `date`) VALUES
 	(2, 2, 'Diversos', '2021-05-21'),
 	(3, 3, 'Cartões', '2021-05-22'),
 	(4, 4, 'Despesas', '2021-05-21'),
-	(5, 5, 'Carne', '2021-05-21');
+	(5, 5, 'Carne', '2021-05-21'),
+	(6, 6, 'Casa', '2021-05-31'),
+	(7, 7, 'Carro', '2021-05-31');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela financial.payments
@@ -51,19 +53,22 @@ CREATE TABLE IF NOT EXISTS `payments` (
   `status` varchar(50) DEFAULT NULL,
   `date` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf8mb4 COMMENT='tabela de pagamentos ';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COMMENT='tabela de pagamentos ';
 
 -- Copiando dados para a tabela financial.payments: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `payments` DISABLE KEYS */;
 INSERT IGNORE INTO `payments` (`id`, `id_user`, `title`, `centcusto`, `placed`, `value`, `due_at`, `obs`, `rep`, `responsible`, `status`, `date`) VALUES
-	(94, 1, 'Salario', '1', '0', 500.3, '2021-05-24', 'Salario do dia 5', NULL, NULL, 'ok', '2021-05-24'),
-	(97, NULL, 'title', 'centcusto', 'placed', 0, '2020-01-01', 'obs', 'repeat', 'responsible', NULL, NULL),
-	(98, NULL, 'Casa', 'Despesas', '10', 100, '2021-05-13', 'casa ', 'single', 'Fernando Higino', NULL, NULL),
-	(99, NULL, 'Casa', 'Despesas', '10', 100, '2021-05-13', 'casa ', 'single', 'Fernando Higino', NULL, NULL),
-	(100, NULL, 'teste', 'salario', '10', 10, '2021-05-21', 'fgdfgdfg', 'single', 'Fernando Higino', NULL, '2021-05-27'),
-	(101, NULL, 'teste', 'salario', '10', 10, '2021-05-27', 'fhfghfgh', 'single', 'Fernando Higino', NULL, '2021-05-27'),
-	(102, NULL, 'teste', 'salario', '10', 100, '2021-05-21', 'hgjghjghj', 'single', 'Fernando Higino', 'pending', '2021-05-27'),
-	(103, NULL, 'dfsdfsdf', 'Cartões', '10', 5, '2021-05-07', 'jhjghjghj', 'single', 'Fernando Higino', 'pending', '2021-05-27');
+	(1, NULL, 'Casa', 'Casa', '450', 900, '2021-01-25', 'Financiamento casa', 'income', 'Fernando Higino', 'pending', '2021-06-01'),
+	(2, NULL, 'Carro', 'Carro', '6', 350, '2021-06-20', 'Financiamento Carro', 'single', 'Fernando Higino', 'pending', '2021-06-01'),
+	(3, NULL, 'NetFlix', 'Diversos', '1', 25, '2021-05-15', 'NetFlix mensal', 'income', 'Fernando Higino', 'pending', '2021-06-01'),
+	(4, NULL, 'Despesa', 'Despesas', '1', 450, '2021-06-09', 'Despesa Mensal', 'single', 'Fernando Higino', 'pending', '2021-06-01'),
+	(5, NULL, 'Salario', 'salario', '1', 800, '2020-01-05', 'Salario do 5° dia útil ', 'income', 'Fernando Higino', 'pending', '2021-06-01'),
+	(6, NULL, 'Salario', 'salario', '1', 750, '2021-01-20', 'Salario do dia 20', 'income', 'Fernando Higino', 'pending', '2021-06-01'),
+	(7, NULL, 'Salario', 'salario', '1', 1.5, '2021-01-13', 'Premiação Mensal ', 'income', 'Fernando Higino', 'pending', '2021-06-01'),
+	(8, NULL, 'Catão Caixa', 'Cartões', '1', 1, '2021-05-01', 'Cartão da caixa', 'single', 'Renata Furtado', 'pending', '2021-06-01'),
+	(9, NULL, 'Carne', 'Carne', '1', 350, '2021-05-01', 'Carne', 'single', 'Fernando Higino', 'pending', '2021-06-01'),
+	(10, NULL, 'Lampada', 'Casa', '1', 15, '2021-05-13', 'lâmpada da cozinha', 'single', 'Fernando Higino', 'pending', '2021-06-01'),
+	(11, NULL, 'Copo Avon', 'Casa', '1', 150, '2021-05-14', 'copo da avon', 'single', 'Fernando Higino', 'pending', '2021-06-01');
 /*!40000 ALTER TABLE `payments` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela financial.responsible
