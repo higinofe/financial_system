@@ -7,7 +7,7 @@
     </div>
 
     <header>
-        <h3 class="icon-search">Pesquisar por Cliente:</h3>
+        <h3 class="icon-search">Filtro:</h3>
     </header>
 
     <main>
@@ -18,18 +18,24 @@
             </label>
 
             <label>
-                <span>Categoria:</span>
-                <input type="text">
+                <div class="label_g2">
+                <span class="legend">*Categoria:</span>
+                    <select name="category" required>
+                        <?php foreach($categorys as $result): ?>
+                            <option value="<?= $result->name; ?>"><?= $result->name; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
             </label>
 
             <div class="label_double">
                 <label class="label_50">
-                    <span>Data inicio</span>
+                    <span>Vencimento Inicio</span>
                     <input type="text" size="2">
                 </label>
 
                 <label class="label_50">
-                    <span>Data Fim:</span>
+                    <span>Vencimento Fim:</span>
                     <input type="text" size="2">
                 </label>
             </div>

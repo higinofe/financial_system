@@ -61,7 +61,7 @@
                         </div>
                         <div class="label_g2">
                             <label class="label">
-                                    <span class="legend">*Obeservação:</span>
+                                    <span class="legend">*Observação:</span>
                                     <input type="text" name="obs" placeholder="Obeservação"
                                     value="" required />
                             </label>

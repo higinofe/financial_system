@@ -13,7 +13,7 @@
                 </ul>
             </nav>
 
-            <a href="dashboard.php?app=users/create" class="btn btn-orange icon-user ml-1">Novo +</a>
+            <a href="<?= url("criacao"); ?>" class="btn btn-orange icon-user ml-1">Novo +</a>
             <button class="btn btn-green icon-search icon-notext ml-1 search_open"></button>
         </div>
     </header>
@@ -36,9 +36,9 @@
                     <?php foreach($paymente as $result): ?>
                     <tr>
                         <td><a href="" class="text-orange"><?= $result->title; ?></a></td>
-                        <td><a href="" class="text-orange"><?= $result->category; ?></a></td>
+                        <td><a href="" class="text-orange"><?= $result->centcusto; ?></a></td>
                         <td><?= $result->placed; ?></td>
-                        <td><?= date('Y-m-d'); ?></td>
+                        <td><?= $result->due_at; ?></td>
                         <td><?= $result->obs ?></td>
 
                     </tr>

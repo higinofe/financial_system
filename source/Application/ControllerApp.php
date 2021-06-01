@@ -25,14 +25,16 @@ class ControllerApp extends shots
         ]);      
     }
 
-    public function fluxoIndex()
+    public function fluxoIndex($data)
     {
+        var_dump($data);
         $head = CONFIG_SITE_TITLE;
 
         echo $this->view->render("fluxo/index.php",
         [
             "head" => $head,
-            "paymente" => (new payments())->find()->fetch(true)
+            "paymente" => (new payments())->find()->fetch(true),
+            "categorys" => (new category())->find()->fetch(true)
         ]);
     }
 
