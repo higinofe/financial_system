@@ -3,13 +3,14 @@ ob_start();
 
 require __DIR__ . '/vendor/autoload.php';
 
+
 use CoffeeCode\Router\Router;
 
 $route = new Router(url());
 $route->namespace('Source\Application');
 
 /**
- * Rotas aplication
+ * Rotas aplication for
  */
 $route->group(null);
 $route->get("/", "ControllerApp:dash");
